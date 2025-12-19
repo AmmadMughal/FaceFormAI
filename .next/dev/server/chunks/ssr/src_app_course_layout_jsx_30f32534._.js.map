@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///P:/First/my-app/src/app/course/layout.jsx"],"sourcesContent":["import React from 'react'\r\n\r\nconst Courselayout = ({children}) => {\r\n  return (\r\n    <div style={{ border:\"1px red solid\"}}>\r\n      {children}\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Courselayout;"],"names":[],"mappings":";;;;;AAAA;;;AAEA,MAAM,eAAe,CAAC,EAAC,QAAQ,EAAC;IAC9B,qBACE,8OAAC;QAAI,OAAO;YAAE,QAAO;QAAe;kBACjC;;;;;;AAGP;uCAEe"}}]
+}

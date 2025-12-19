@@ -1,0 +1,99 @@
+/* [project]/src/app/main.css [app-client] (css) */
+:root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --lightningcss-light: ;
+    --lightningcss-dark: initial;
+    color-scheme: dark;
+  }
+}
+
+header {
+  background-color: #ddd;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem 2rem;
+  display: flex;
+}
+
+header ul {
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+header li {
+  margin: 0;
+}
+
+header a {
+  color: #000;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .3s;
+}
+
+header a:hover {
+  color: #21e004;
+  background-color: #ddd;
+}
+
+header div {
+  color: #0a0a0a;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logo {
+  color: #21e004;
+  background-color: #5e5959;
+  border-radius: 50px;
+  padding: .5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .3s;
+}
+
+/*# sourceMappingURL=src_app_main_css_bad6b30c._.single.css.map*/
