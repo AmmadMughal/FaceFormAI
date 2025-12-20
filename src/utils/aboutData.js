@@ -1,6 +1,6 @@
 
 export const introductionText = [
-  "FaceForm AI is an innovative AI-powered platform designed to help users understand their facial features and enhance their appearance through personalized guidance. Our Phase 1 release provides comprehensive facial analysis, improvement suggestions, targeted exercises, and style recommendations tailored to your unique face shape.",
+  "FaceForm AI is an innovative AI-powered platform designed to help users understand their facial features and enhance their appearance through personalized guidance. Overflow provides comprehensive facial analysis, improvement suggestions, targeted exercises, and style recommendations tailored to your unique face shape.",
   "We guide you through a simple process: complete a brief onboarding questionnaire, upload a facial photo, and receive detailed analysis across multiple features including jawline, skin, cheekbones, lips, eyes, forehead, symmetry, and skin health."
 ];
 

@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
@@ -5,8 +8,47 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import SendIcon from '@mui/icons-material/Send';
+import { keyframes } from '@mui/material/styles';
+
+const borderAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // Add your form submission logic here
+  };
+
   return (
     <Box
       sx={{
@@ -14,141 +56,130 @@ export default function ContactForm() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        background: '#FAFAFB',
-        
-        p: 2
+        backgroundColor: 'background.default',
+        padding: 2,
+        paddingBottom: 20,
+        boxShadow: '0 20px 40px rgba(58, 235, 69, 0.15), 0 10px 20px rgba(58, 235, 69, 0.1)',
       }}
     >
-      <Paper
-        elevation={6}
+      <Box
         sx={{
-          width: {
-            xs: '90%',
-            sm: '400px',
-            md: '500px'
-          },
-          height: {
-            xs: 'auto',
-            sm: '500px',
-            md: '600px'
-          },
-          p: {
-            xs: 2,
-            sm: 3,
-            md: 4
+          position: 'relative',
+          width: '100%',
+          maxWidth: {
+            xs: '100%',
+            sm: 650,
+            md: 780,
+            lg: 900
           },
           borderRadius: 3,
-          backgroundColor: 'white',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-          display: 'flex',
-          borderColor: '#1b5e20',
-          flexDirection: 'column',
-          justifyContent: 'center'
-          
+          padding: '3px',
+          backgroundImage: 'linear-gradient(45deg, #3aeb45, #4F46E5, #3aeb45, #4F46E5, #3aeb45)',
+          backgroundSize: '400% 400%',
+          animation: `${borderAnimation} 4s linear infinite`
         }}
       >
-        <Typography 
-          variant={{
-            xs: 'h5',
-            sm: 'h4'
-          }} 
-          component="h1" 
-          align="center" 
-          gutterBottom
-          sx={{ 
-            fontWeight: 'bold',
-            color: '#1b5e20',
-            mb: 3
+        <Paper
+          component="form"
+          onSubmit={handleSubmit}
+          elevation={6}
+          sx={{
+            width: '100%',
+            padding: {
+              xs: 2,
+              sm: 2.5,
+              md: 3
+            },
+            borderRadius: 2.5,
+            backgroundColor: 'background.paper',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+            display: 'flex',
+            flexDirection: 'column'
           }}
         >
-          Contact Us
-        </Typography>
-        
-        <Typography 
-          variant="body1" 
-          align="center" 
-          color="text.secondary"
-          sx={{ mb: 4 }}
-        >
-          Fill out the form below and we&apos;ll get back to you soon
-        </Typography>
-
-        <Stack spacing={3}>
-          <TextField
-            id="name-field"
-            label="Full Name"
-            variant="outlined"
-            fullWidth
-            required
+          <Typography
+            variant="h4"
+            component="h1"
+            align="center"
             sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2,
-                '&:hover fieldset': {
-                  borderColor: '#1b5e20',
-                },
-              },
+              fontWeight: 700,
+              color: 'primary.main',
+              marginBottom: 1
             }}
-          />
-          
-          <TextField
-            id="email-field"
-            label="Email Address"
-            type="email"
-            variant="outlined"
-            fullWidth 
-            required
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2,
-                '&:hover fieldset': {
-                  borderColor: '#1b5e20',
-                },
-              },
-            }}
-          />
-          
-          <TextField
-            id="message-field"
-            label="Your Message"
-            multiline
-            rows={5}
-            variant="outlined"
-            fullWidth
-            required
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2,
-                '&:hover fieldset': {
-                  borderColor: '#1b5e20',
-                },
-              },
-            }}
-          />
-
-          <Button
-            variant="contained"
-            size="large"
-            endIcon={<SendIcon />}
-            sx={{
-              mt: 2,
-              py: 1.5,
-              borderRadius: 2,
-              backgroundColor: '#1b5e20',
-              '&:hover': {
-                backgroundColor: '#2e7d32',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 4px 12px rgba(25, 118, 210, 0.3)',
-              },
-              transition: 'all 0.3s ease',
-              fontWeight: 'bold',
-              fontSize: '1rem'
-            }}
-            fullWidth
           >
-            Send Message
-          </Button>
-        </Stack>
-      </Paper>
+            Contact Us
+          </Typography>
+
+          <Typography
+            variant="body2"
+            align="center"
+            color="text.secondary"
+            sx={{ marginBottom: 3 }}
+          >
+            Fill out the form below and we&apos;ll get back to you soon
+          </Typography>
+
+          <Stack spacing={2.5}>
+            <TextField
+              label="Full Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              size="small"
+              fullWidth
+              required
+              variant="outlined"
+            />
+
+            <TextField
+              label="Email Address"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              size="small"
+              fullWidth
+              required
+              variant="outlined"
+            />
+
+            <TextField
+              label="Your Message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              multiline
+              rows={4}
+              size="small"
+              fullWidth
+              required
+              variant="outlined"
+            />
+
+            <Button
+              type="submit"
+              variant="contained"
+              size="medium"
+              endIcon={<SendIcon />}
+              fullWidth
+              sx={{
+                marginTop: 1,
+                paddingY: 1.2,
+                borderRadius: 2,
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
+                  transition: 'all 0.3s ease'
+                }
+              }}
+            >
+              Send Message
+            </Button>
+          </Stack>
+        </Paper>
+      </Box>
     </Box>
   );
 }

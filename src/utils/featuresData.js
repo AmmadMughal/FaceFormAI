@@ -7,6 +7,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import BalanceIcon from '@mui/icons-material/Balance';
 import HealingIcon from '@mui/icons-material/Healing';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import Face3Icon from '@mui/icons-material/Face3';
 
 export const facialFeatures = [
   {
@@ -48,66 +49,14 @@ export const facialFeatures = [
     icon: <HealingIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
     title: 'Skin Health',
     description: 'Skin Health Analysis evaluates the overall condition of your skin using AI-powered assessment. It examines factors like hydration, texture, elasticity, pigmentation, and visible imperfections such as acne or dark spots. Based on the results, it provides personalized recommendations for skincare routines, lifestyle tips, and treatments to promote healthier, more radiant skin.'
-  }
+  },
+   {
+    icon: <Face3Icon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    title: 'Hair Style',
+    description: 'Hair Style Analysis evaluates your facial structure and hair characteristics using AI-powered assessment. It analyzes factors such as face shape, hair type, hair density, and hairline to recommend the most suitable hairstyles. Based on the results, it provides personalized hairstyle suggestions, grooming tips, and styling advice to enhance your overall appearance and confidence.'
+   },
 ];
 
-export const aboutData = [
-  {
-    icon: <FaceIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'AI Analysis',
-    description: 'Advanced AI-powered facial analysis providing detailed insights into your unique features.'
-  },
-  {
-    icon: <SpaIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Personalized Tips',
-    description: 'Customized recommendations tailored to your specific facial features and goals.'
-  },
-  {
-    icon: <SelfImprovementIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Exercise Plans',
-    description: 'Targeted facial exercises designed to enhance and define your natural features.'
-  },
-  {
-    icon: <VisibilityIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Progress Tracking',
-    description: 'Monitor your improvement journey with detailed progress reports and analytics.'
-  },
-  {
-    icon: <BalanceIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Expert Guidance',
-    description: 'Professional insights and recommendations based on proven facial enhancement techniques.'
-  },
-  {
-    icon: <HealingIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Safe & Natural',
-    description: 'Non-invasive, natural approaches to facial enhancement that respect your unique features.'
-  }
-];
-
-export const coreFeatures = [
-  {
-    title: 'Phase 1: Available Now',
-    features: [
-      'Comprehensive facial analysis',
-      'Personalized improvement suggestions',
-      'Targeted facial exercises',
-      'Style recommendations',
-      'Progress tracking dashboard',
-      'Expert guidance library'
-    ]
-  },
-  {
-    title: 'Phase 2: Coming Soon',
-    features: [
-      'Real-time video analysis',
-      'AR visualization tools',
-      'Community features',
-      'Advanced analytics',
-      'Mobile app availability',
-      'Premium coaching options'
-    ]
-  }
-];
 
 
 

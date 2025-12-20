@@ -1,160 +1,236 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+
+import { Box,Toolbar, Typography, Button, IconButton, Drawer, List, ListItemButton, ListItemText
+} from '@mui/material';
+
+import MenuIcon from '@mui/icons-material/Menu';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '@mui/material/styles';
+
+const NAV_ITEMS = ['home', 'about', 'contact'];
 
 const Header = () => {
-  const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
+  const theme = useTheme();
 
-  // Update active section based on scroll position
+  const [activeSection, setActiveSection] = useState('home');
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState(null);
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'contact'];
+      setScrolled(window.scrollY > 50);
+
       const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
+      NAV_ITEMS.forEach((section) => {
         const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
+        if (!element) return;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+        const { offsetTop, offsetHeight } = element;
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section);
         }
-      }
+      });
     };
 
-    // Initial check
     handleScroll();
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Smooth scroll to section
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80, // Adjust for header height
-        behavior: 'smooth'
-      });
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    window.scrollTo({
+      top: element.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  };
+
+  const isActive = (section) => {
+    if (pathname === '/') return activeSection === section;
+    return section === 'home' ? pathname === '/' : pathname.includes(section);
+  };
+
+  const headerVariants = {
+    initial: { y: 0, opacity: 1 },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 100, damping: 20 }
     }
   };
 
-  // Check if current path matches the section
-  const isActive = (section) => {
-    return activeSection === section || 
-           (section === 'home' && pathname === '/') ||
-           (section !== 'home' && pathname.includes(section));
+  const navItemVariants = {
+    initial: { opacity: 0, y: -10 },
+    animate: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1 + 0.3,
+        type: 'spring',
+        stiffness: 150,
+        damping: 15
+      }
+    }),
+    hover: { scale: 1.05 }
+  };
+
+  const drawerVariants = {
+    open: { x: 0 },
+    closed: { x: '100%' }
   };
 
   return (
-    <Box 
-      component="header"
-      sx={{ 
-        backgroundColor: '#1b5e20',
-        position: 'fixed',
-        width: '100%',
-        top: 0,
-        zIndex: 1300,
-        boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
-      }}
-    >
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'white' }}>
-          Logo
-        </Typography>
-        <Box sx={{ 
-          display: { 
-            xs: 'none',
-            sm: 'flex' 
-          }, 
-          gap: 2, 
-          mr: 2 
-        }}>
-          <Button 
-            onClick={() => scrollToSection('home')}
-            sx={{ 
-              color: 'white',
-              fontSize: {
-                xs: '0.875rem',
-                sm: '1rem'
-              },
-              position: 'relative',
-              '&:after': isActive('home') ? {
-                content: '""',
-                position: 'absolute',
-                bottom: '-5px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '30px',
-                height: '3px',
-                backgroundColor: 'white',
-                borderRadius: '2px'
-              } : {}
-            }}
-          >
-            Home
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('about')}
-            sx={{ 
-              color: 'white',
-              fontSize: {
-                xs: '0.875rem',
-                sm: '1rem'
-              },
-              position: 'relative',
-              '&:after': isActive('about') ? {
-                content: '""',
-                position: 'absolute',
-                bottom: '-5px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '30px',
-                height: '3px',
-                backgroundColor: 'white',
-                borderRadius: '2px'
-              } : {}
-            }}
-          >
-            About
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('contact')}
-            sx={{ 
-              color: 'white',
-              fontSize: {
-                xs: '0.875rem',
-                sm: '1rem'
-              },
-              position: 'relative',
-              '&:after': isActive('contact') ? {
-                content: '""',
-                position: 'absolute',
-                bottom: '-5px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '30px',
-                height: '3px',
-                backgroundColor: 'white',
-                borderRadius: '2px'
-              } : {}
-            }}
-          >
-            Contact
-          </Button>
-        </Box>
-      </Toolbar>
-    </Box>
+    <motion.div initial="initial" animate="animate" variants={headerVariants}>
+      <Box
+        component="header"
+        sx={{
+          position: 'fixed',
+          top: 0,
+          width: '100%',
+          zIndex: 1300,
+          backgroundColor: 'primary.main',
+          boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none'
+        }}
+      >
+        <Toolbar>
+          {/* Logo */}
+          <motion.div style={{ flexGrow: 1 }} whileHover={{ scale: 1.05 }}>
+            <Typography
+              variant="h6"
+              sx={{ color: '#fff', fontWeight: 700, cursor: 'pointer' }}
+              onClick={() => scrollToSection('home')}
+            >
+              Logo
+              <motion.span
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                style={{
+                  display: 'inline-block',
+                  width: 8,
+                  height: 8,
+                  marginLeft: 8,
+                  borderRadius: '50%',
+                  backgroundColor: '#fff'
+                }}
+              />
+            </Typography>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
+            {NAV_ITEMS.map((item, index) => (
+              <motion.div
+                key={item}
+                custom={index}
+                variants={navItemVariants}
+                initial="initial"
+                animate="animate"
+                whileHover="hover"
+              >
+                <Button
+                  onClick={() => scrollToSection(item)}
+                  onMouseEnter={() => setHoveredNav(item)}
+                  onMouseLeave={() => setHoveredNav(null)}
+                  sx={{
+                    color: '#fff',
+                    fontWeight: isActive(item) ? 700 : 500,
+                    position: 'relative'
+                  }}
+                >
+                  {item.toUpperCase()}
+                  <motion.div
+                    animate={{
+                      scaleX:
+                        isActive(item) || hoveredNav === item ? 1 : 0
+                    }}
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '10%',
+                      width: '80%',
+                      height: 2,
+                      backgroundColor: '#fff',
+                      transformOrigin: 'left'
+                    }}
+                  />
+                </Button>
+              </motion.div>
+            ))}
+          </Box>
+
+          {/* Mobile Menu */}
+          <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+            <IconButton onClick={() => setMobileOpen(true)} sx={{ color: '#fff' }}>
+              <MenuIcon />
+            </IconButton>
+
+            <AnimatePresence>
+              {mobileOpen && (
+                <motion.div
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  variants={drawerVariants}
+                  style={{ position: 'fixed', top: 0, right: 0 }}
+                >
+                  <Drawer
+                    anchor="right"
+                    open={mobileOpen}
+                    onClose={() => setMobileOpen(false)}
+                    PaperProps={{
+                      sx: {
+                        width: 240,
+                        backgroundColor: 'primary.main',
+                        color: '#fff'
+                      }
+                    }}
+                  >
+                    <Box sx={{ pt: 8, px: 3 }}>
+                      <List>
+                        {NAV_ITEMS.map((item) => (
+                          <ListItemButton
+                            key={item}
+                            selected={isActive(item)}
+                            onClick={() => {
+                              scrollToSection(item);
+                              setMobileOpen(false);
+                            }}
+                            sx={{ borderRadius: 2 }}
+                          >
+                            <ListItemText primary={item.toUpperCase()} />
+                          </ListItemButton>
+                        ))}
+                      </List>
+                    </Box>
+                  </Drawer>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Box>
+        </Toolbar>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          animate={{ scaleX: scrolled ? 1 : 0 }}
+          style={{
+            height: 2,
+            backgroundColor: '#fff',
+            transformOrigin: 'left'
+          }}
+        />
+      </Box>
+    </motion.div>
   );
 };
 
