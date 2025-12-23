@@ -1,54 +1,22 @@
 'use client';
 import * as React from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
-import { colors } from "../utils/constants";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: colors.primary,
-      dark: colors.primaryDark,
-    },
-    secondary: {
-      main: colors.secondary,
-    },
-    background: {
-      default: colors.surface,
-      paper: colors.paper,
-    },
-    text: {
-      primary: colors.textPrimary,
-      secondary: colors.textMuted,
-    },
-  },
-  typography: {
-    h1: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-    h2: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-    h3: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-    h4: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-    h5: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-    h6: { fontFamily: '"Modern Geometric Sans-Serif", sans-serif' },
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        'h1, h2, h3, h4, h5, h6': {
-          fontFamily: '"Modern Geometric Sans-Serif", sans-serif',
-        },
-      },
-    },
-  },
-});
-
-function createEmotionCache() {
-  return createCache({ key: 'mui', prepend: true });
-}
+import { useTheme } from '../context/ThemeContext';
 
 export default function ThemeRegistry({ children }) {
+  const theme = useTheme();
+  
+  // Create MUI theme from our custom theme context
+  const muiTheme = createTheme(theme);
+
+  function createEmotionCache() {
+    return createCache({ key: 'mui', prepend: true });
+  }
+
   const [{ cache, flush }] = React.useState(() => {
     const cache = createEmotionCache();
     cache.compat = true;
@@ -91,7 +59,7 @@ export default function ThemeRegistry({ children }) {
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={muiTheme}>
         <CssBaseline />
         {children}
       </ThemeProvider>

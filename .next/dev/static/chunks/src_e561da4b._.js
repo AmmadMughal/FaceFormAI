@@ -162,6 +162,8 @@ const Header = ()=>{
                                     alt: "Logo",
                                     width: 120,
                                     height: 70,
+                                    loading: "eager",
+                                    priority: true,
                                     style: {
                                         objectFit: 'contain'
                                     }
@@ -220,23 +222,23 @@ const Header = ()=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/layout/Header.jsx",
-                                                lineNumber: 148,
+                                                lineNumber: 150,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/layout/Header.jsx",
-                                        lineNumber: 137,
+                                        lineNumber: 139,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, item, false, {
                                     fileName: "[project]/src/components/layout/Header.jsx",
-                                    lineNumber: 129,
+                                    lineNumber: 131,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Header.jsx",
-                            lineNumber: 127,
+                            lineNumber: 129,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -254,12 +256,12 @@ const Header = ()=>{
                                     },
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Menu$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                         fileName: "[project]/src/components/layout/Header.jsx",
-                                        lineNumber: 171,
+                                        lineNumber: 173,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/Header.jsx",
-                                    lineNumber: 170,
+                                    lineNumber: 172,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -303,43 +305,43 @@ const Header = ()=>{
                                                                 primary: item.toUpperCase()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/layout/Header.jsx",
-                                                                lineNumber: 207,
+                                                                lineNumber: 209,
                                                                 columnNumber: 29
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, item, false, {
                                                             fileName: "[project]/src/components/layout/Header.jsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 200,
                                                             columnNumber: 27
                                                         }, ("TURBOPACK compile-time value", void 0)))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/layout/Header.jsx",
-                                                    lineNumber: 196,
+                                                    lineNumber: 198,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/layout/Header.jsx",
-                                                lineNumber: 195,
+                                                lineNumber: 197,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/layout/Header.jsx",
-                                            lineNumber: 183,
+                                            lineNumber: 185,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/Header.jsx",
-                                        lineNumber: 176,
+                                        lineNumber: 178,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/layout/Header.jsx",
-                                    lineNumber: 174,
+                                    lineNumber: 176,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/layout/Header.jsx",
-                            lineNumber: 169,
+                            lineNumber: 171,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
@@ -359,7 +361,7 @@ const Header = ()=>{
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Header.jsx",
-                    lineNumber: 220,
+                    lineNumber: 222,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
@@ -430,6 +432,8 @@ __turbopack_context__.s([
     ()=>backgroundColorMain,
     "colors",
     ()=>colors,
+    "darkColors",
+    ()=>darkColors,
     "fontSize",
     ()=>fontSize,
     "largePadding",
@@ -450,15 +454,27 @@ const mediumPadding = 20;
 const largePadding = 30;
 const maxWidth = "1200px";
 const fontSize = "16px";
+// Light mode colors
 const colors = {
     primary: '#3aeb45',
-    primaryDark: '#4F46E5',
-    secondary: '#3aeb45',
+    primaryDark: '#3aeb45',
+    secondary: '#4F46E5',
     surface: '#FAFAFB',
     paper: '#ffffff',
     textOnPrimary: '#ffffff',
     textPrimary: '#1F2937',
     textMuted: '#6B7280'
+};
+// Dark mode colors
+const darkColors = {
+    primary: '#4ADE80',
+    primaryDark: '#4ADE80',
+    secondary: '#6366F1',
+    surface: '#1E1E2E',
+    paper: '#2A2E45',
+    textOnPrimary: '#1E1E2E',
+    textPrimary: '#F3F4F6',
+    textMuted: '#9CA3AF'
 };
 const backgroundColorMain = colors.primary;
 const backgroundColorDark = colors.primaryDark;
@@ -753,7 +769,7 @@ const HeroSection = ()=>{
                                             transition: 'all 0.3s ease'
                                         },
                                         '&:active': {
-                                            backgroundColor: '#0d47a1',
+                                            backgroundColor: '#1565c0',
                                             transform: 'translateY(0)',
                                             boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
                                         }
@@ -1293,7 +1309,7 @@ const FacialAnalysisFeatures = ()=>{
                                                 left: '25%',
                                                 width: '50%',
                                                 height: '3px',
-                                                background: `linear-gradient(90deg, transparent, ${theme.palette.primary.main}, transparent)`,
+                                                background: `linear-gradient(90deg, transparent, ${theme.palette.primary}, transparent)`,
                                                 borderRadius: '2px'
                                             }
                                         },
@@ -2329,14 +2345,14 @@ const About = ()=>{
                                             px: 4,
                                             py: 1.5,
                                             borderRadius: 2,
-                                            backgroundColor: "primary.main",
+                                            backgroundColor: "#1565c0",
                                             color: "white",
                                             fontWeight: 600,
                                             mt: 5,
                                             position: "relative",
                                             overflow: "hidden",
                                             '&:hover': {
-                                                backgroundColor: '#1565c0',
+                                                backgroundColor: '#4F46E5',
                                                 boxShadow: '0 8px 20px rgba(79, 70, 229, 0.3)'
                                             },
                                             '&:active': {
@@ -2508,7 +2524,7 @@ const About = ()=>{
                                                     width: '8px',
                                                     height: '8px',
                                                     borderRadius: '50%',
-                                                    backgroundColor: '#4F46E5',
+                                                    backgroundColor: '#3aeb45',
                                                     opacity: 0.6
                                                 }
                                             },
@@ -2580,7 +2596,7 @@ const About = ()=>{
                                                     bottom: "-10px",
                                                     left: 0,
                                                     height: "3px",
-                                                    background: "linear-gradient(90deg, #3aeb45)",
+                                                    background: "linear-gradient(90deg, #1565c0, #3aeb45)",
                                                     borderRadius: "2px"
                                                 }
                                             }, void 0, false, {
@@ -2748,7 +2764,7 @@ const About = ()=>{
                                                                     fontSize: "2rem",
                                                                     fontWeight: 700,
                                                                     mb: 2,
-                                                                    color: "primary.main"
+                                                                    color: "scendaery"
                                                                 },
                                                                 children: step.step
                                                             }, void 0, false, {
@@ -2886,7 +2902,7 @@ const About = ()=>{
                                 p: 5,
                                 borderRadius: 3,
                                 textAlign: "center",
-                                backgroundColor: "primary.main",
+                                backgroundColor: "#1565c0",
                                 color: "white",
                                 position: "relative",
                                 overflow: "hidden"
@@ -3110,8 +3126,7 @@ function ContactForm() {
             minHeight: '100vh',
             backgroundColor: 'background.default',
             padding: 2,
-            paddingBottom: 20,
-            boxShadow: '0 20px 40px rgba(58, 235, 69, 0.15), 0 10px 20px rgba(58, 235, 69, 0.1)'
+            paddingBottom: 4
         },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             sx: {
@@ -3239,10 +3254,12 @@ function ContactForm() {
                                     borderRadius: 2,
                                     fontWeight: 600,
                                     fontSize: '0.95rem',
+                                    backgroundColor: '#1565c0',
                                     '&:hover': {
                                         transform: 'translateY(-2px)',
                                         boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
-                                        transition: 'all 0.3s ease'
+                                        transition: 'all 0.3s ease',
+                                        backgroundColor: ' #4F46E5'
                                     }
                                 },
                                 children: "Send Message"

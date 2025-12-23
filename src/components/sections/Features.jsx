@@ -241,7 +241,7 @@ const FacialAnalysisFeatures = () => {
                     left: '25%',
                     width: '50%',
                     height: '3px',
-                    background: `linear-gradient(90deg, transparent, ${theme.palette.primary.main}, transparent)`,
+                    // backgroundColor: `background.default`,
                     borderRadius: '2px'
                   }
                 }}
@@ -330,7 +330,8 @@ const FacialAnalysisFeatures = () => {
                     flexDirection: 'column',
                     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                     borderRadius: '16px',
-                    background: `linear-gradient(145deg, ${theme.palette.background.paper}, ${theme.palette.grey[50]})`,
+                    // background: `linear-gradient(145deg, ${theme.palette.background.paper}, ${theme.palette.grey[50]})`,
+                    backgroundColor: 'background.default',
                     boxShadow: `0 4px 20px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.08)'}`,
                     position: 'relative',
                     overflow: 'hidden',

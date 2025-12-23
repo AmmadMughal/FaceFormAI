@@ -58,8 +58,8 @@ export default function ContactForm() {
         minHeight: '100vh',
         backgroundColor: 'background.default',
         padding: 2,
-        paddingBottom: 20,
-        boxShadow: '0 20px 40px rgba(58, 235, 69, 0.15), 0 10px 20px rgba(58, 235, 69, 0.1)',
+        paddingBottom: 4,
+    
       }}
     >
       <Box
@@ -168,10 +168,12 @@ export default function ContactForm() {
                 borderRadius: 2,
                 fontWeight: 600,
                 fontSize: '0.95rem',
+                backgroundColor: '#1565c0',
                 '&:hover': {
                   transform: 'translateY(-2px)',
                   boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  backgroundColor:' #4F46E5'
                 }
               }}
             >

@@ -88,7 +88,7 @@ const HeroSection = () => {
                     transition: 'all 0.3s ease'
                   },
                   '&:active': {
-                    backgroundColor: '#0d47a1',
+                    backgroundColor: '#1565c0',
                     transform: 'translateY(0)',
                     boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
                   }

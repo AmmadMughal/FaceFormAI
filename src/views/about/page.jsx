@@ -183,6 +183,7 @@ const About = () => {
         py: 8,
         position: "relative",
         overflow: "hidden"
+        
       }}
       ref={ref}
     >
@@ -237,7 +238,7 @@ const About = () => {
                 mb: 3,
                 background: "linear-gradient(45deg, #4F46E5 30%, #8B5CF6 90%)",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "black",
+                WebkitTextFillColor: theme => theme.palette.mode === 'dark' ? "transparent" : "text.primary",
                 backgroundClip: "text",
                 position: "relative",
                 display: "inline-block"
@@ -316,14 +317,14 @@ const About = () => {
                   px: 4,
                   py: 1.5,
                   borderRadius: 2,
-                  backgroundColor: "primary.main",
+                  backgroundColor: "#1565c0",
                   color: "white",
                   fontWeight: 600,
                   mt: 5,
                   position: "relative",
                   overflow: "hidden",
                   '&:hover': {
-                    backgroundColor: '#1565c0',
+                    backgroundColor: '#4F46E5',
                     boxShadow: '0 8px 20px rgba(79, 70, 229, 0.3)',
                   },
                   '&:active': {
@@ -339,12 +340,12 @@ const About = () => {
                     backgroundSize: "200% 100%",
                     position: "absolute",
                     top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%"
+                    left: 0,
+                    right: 0,
+                    bottom: 0
                   }}
                 />
-                Start Your Analysis
+                Get Started
               </Button>
             </motion.div>
           </motion.div>
@@ -363,8 +364,11 @@ const About = () => {
               p: 4,
               mb: 8,
               borderRadius: 3,
-              background: "linear-gradient(135deg, #f6f5ff 0%, #f0f9ff 100%)",
-              border: "1px solid #3aeb45",
+              background: theme => theme.palette.mode === 'dark' 
+                ? "linear-gradient(135deg, #2A2E45 0%, #1E1E2E 100%)"
+                : "linear-gradient(135deg, #f6f5ff 0%, #f0f9ff 100%)",
+              border: "1px solid",
+              borderColor: "secondary.main",
               position: "relative",
               overflow: "hidden"
             }}
@@ -390,7 +394,7 @@ const About = () => {
               animate={isIntroInView ? "visible" : "hidden"}
               variants={fadeInVariants}
             >
-              <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: "relative", pr: 4 }}>
+              <Typography variant="h4" sx={{ mb: 3, fontWeight: 600, position: "relative", pr: 4, color: "text.primary" }}>
                 What is FaceForm AI?
                 
                 {/* Dot Animation */}
@@ -432,6 +436,7 @@ const About = () => {
                     fontSize: "1.1rem",
                     position: "relative",
                     pl: 3,
+                    color: "text.primary",
                     '&::before': {
                       content: '""',
                       position: 'absolute',
@@ -477,7 +482,8 @@ const About = () => {
                   position: "relative",
                   display: "inline-block",
                   left: "50%",
-                  transform: "translateX(-50%)"
+                  transform: "translateX(-50%)",
+                  color: "text.primary"
                 }}
               >
                 How It Works
@@ -524,7 +530,7 @@ const About = () => {
                       sx={{
                         p: { xs: 3, sm: 4 },
                         borderRadius: 3,
-                        backgroundColor: "white",
+                        backgroundColor: "background.default",
                         height: "auto",
                         minHeight: { sm: "320px" },
                         width: "100%",
@@ -675,7 +681,7 @@ const About = () => {
                 </Grid>
               ))}
             </Grid>
-          </Container>
+        </Container>
         </Box>
 
         {/* Call to Action Section */}
@@ -691,7 +697,7 @@ const About = () => {
               p: 5,
               borderRadius: 3,
               textAlign: "center",
-              backgroundColor: "primary.main",
+              backgroundColor: "#1565c0",
               color: "white",
               position: "relative",
               overflow: "hidden"

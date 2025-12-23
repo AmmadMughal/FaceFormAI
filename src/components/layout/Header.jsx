@@ -7,8 +7,10 @@ import { Box,Toolbar, Typography, Button, IconButton, Drawer, List, ListItemButt
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@/context/ThemeContext';
 import Image from 'next/image';
 
 const NAV_ITEMS = ['home', 'about', 'contact',];
@@ -21,6 +23,10 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,10 +119,12 @@ const Header = () => {
               onClick={() => scrollToSection('home')}
             >
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="Logo"
                 width={120}
                 height={70}
+                loading="eager"
+                priority
                 style={{ objectFit: 'contain' }}
               />
               
@@ -124,7 +132,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2, alignItems: 'center' }}>
             {NAV_ITEMS.map((item, index) => (
               <motion.div
                 key={item}
@@ -163,33 +171,61 @@ const Header = () => {
                 </Button>
               </motion.div>
             ))}
+            
+            {/* Dark Mode Toggle */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <IconButton
+                onClick={theme.toggleTheme}
+                sx={{
+                  color: '#fff',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    transform: 'scale(1.1)',
+                  },
+                  transition: 'all 0.3s ease',
+                }}
+                aria-label="Toggle dark mode"
+              >
+                {theme.isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </motion.div>
           </Box>
 
           {/* Mobile Menu */}
           <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
-            <IconButton onClick={() => setMobileOpen(true)} sx={{ color: '#fff' }}>
+            <IconButton 
+              onClick={handleDrawerToggle} 
+              sx={{ color: '#fff' }}
+              aria-label="Open navigation menu"
+            >
               <MenuIcon />
             </IconButton>
 
-            <AnimatePresence>
-              {mobileOpen && (
-                <motion.div
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  variants={drawerVariants}
-                  style={{ position: 'fixed', top: 0, right: 0 }}
-                >
-                  <Drawer
+            <Drawer
                     anchor="right"
                     open={mobileOpen}
-                    onClose={() => setMobileOpen(false)}
+                    onClose={handleDrawerToggle}
                     PaperProps={{
                       sx: {
                         width: 240,
                         backgroundColor: 'primary.main',
                         color: '#fff'
                       }
+                    }}
+                    ModalProps={{
+                      keepMounted: false,
+                      disablePortal: true,
+                      disableScrollLock: false,
+                      hideBackdrop: false
+                    }}
+                    transitionDuration={{
+                      enter: 300,
+                      exit: 300
                     }}
                   >
                     <Box sx={{ pt: 8, px: 3 }}>
@@ -200,19 +236,35 @@ const Header = () => {
                             selected={isActive(item)}
                             onClick={() => {
                               scrollToSection(item);
-                              setMobileOpen(false);
+                              handleDrawerToggle();
                             }}
                             sx={{ borderRadius: 2 }}
                           >
                             <ListItemText primary={item.toUpperCase()} />
                           </ListItemButton>
                         ))}
+                        
+                        {/* Dark Mode Toggle in Mobile Menu */}
+                        <ListItemButton
+                          onClick={() => {
+                            theme.toggleTheme();
+                            handleDrawerToggle();
+                          }}
+                          sx={{ 
+                            borderRadius: 2,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 2
+                          }}
+                        >
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            {theme.isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+                            <ListItemText primary={theme.isDarkMode ? 'LIGHT MODE' : 'DARK MODE'} />
+                          </Box>
+                        </ListItemButton>
                       </List>
                     </Box>
                   </Drawer>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </Box>
         </Toolbar>
 
