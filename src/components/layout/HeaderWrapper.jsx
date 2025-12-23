@@ -2,5 +2,9 @@
 import Header from './Header';
 
 export default function HeaderWrapper() {
-  return <Header />;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }

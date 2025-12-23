@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
           </Box>
           <Box id="contact" sx={{ pt: 4 }}>
            <ContactForm />
+           
           </Box>
           {children}
         </ThemeRegistry>

@@ -9,8 +9,9 @@ import { Box,Toolbar, Typography, Button, IconButton, Drawer, List, ListItemButt
 import MenuIcon from '@mui/icons-material/Menu';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
+import Image from 'next/image';
 
-const NAV_ITEMS = ['home', 'about', 'contact'];
+const NAV_ITEMS = ['home', 'about', 'contact',];
 
 const Header = () => {
   const pathname = usePathname();
@@ -106,25 +107,20 @@ const Header = () => {
         <Toolbar>
           {/* Logo */}
           <motion.div style={{ flexGrow: 1 }} whileHover={{ scale: 1.05 }}>
-            <Typography
-              variant="h6"
-              sx={{ color: '#fff', fontWeight: 700, cursor: 'pointer' }}
+            <Box
+              component="div"
+              sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
               onClick={() => scrollToSection('home')}
             >
-              Logo
-              <motion.span
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                style={{
-                  display: 'inline-block',
-                  width: 8,
-                  height: 8,
-                  marginLeft: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#fff'
-                }}
+              <Image
+                src="/images/logo.jpg"
+                alt="Logo"
+                width={120}
+                height={70}
+                style={{ objectFit: 'contain' }}
               />
-            </Typography>
+              
+            </Box>
           </motion.div>
 
           {/* Desktop Navigation */}
